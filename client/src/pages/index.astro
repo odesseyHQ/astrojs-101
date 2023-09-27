@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+import axios from "axios";
+import { format } from "date-fns";
+import BlogCard from "../components/BlogCard.astro";
+const blogItems = await axios
+  .get("http://127.0.0.1:8090/api/collections/blogs/records?perPage=5")
+  .catch(() => null);
+---
+
+<Layout title="Home">
+  <section>
+    <div class="hero min-h-screen">
+      <div class="hero-content flex-col lg:flex-row">
+        <div>
+          <h1 class="text-5xl font-bold">
+            Blogger: Tech News and Reviews for the Everyday Person
+          </h1>
+          <p class="py-6">
+            Blogger is your go-to source for the latest technology news and
+            reviews. We cover everything from new gadgets and software to
+            industry trends and expert advice. Whether you're a tech enthusiast
+            or just want to stay informed about the latest tech, we have
+            something for everyone.
+          </p>
+          <a href="/create-post" class="btn btn-primary">Create a Blog</a>
+        </div>
+        <img src="/hero.jpg" class="max-w-lg rounded-lg shadow-2xl" />
+      </div>
+    </div>
+  </section>
+  {
+    blogItems?.data?.items?.length > 0 ? (
+      <section>
+        <h2 class="text-2xl font-bold">Blogs</h2>
+
+        <div class="flex gap-3 flex-wrap mt-6 justify-center">
+          {blogItems?.data?.items?.map((item: any) => (
+            <BlogCard
+              title={item.title}
+              description={item.description}
+              created={item.created}
+              id={item.id}
+              imageUrl={item.image}
+            />
+          ))}
+        </div>
+      </section>
+    ) : null
+  }
+</Layout>

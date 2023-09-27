@@ -1,0 +1,14 @@
+---
+import CreateBlogForm from "../components/CreateBlogForm.tsx";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Create a post">
+  <CreateBlogForm client:load />
+</Layout>
+
+<script>
+  if (!localStorage.getItem("token")) {
+    location.href = "/auth";
+  }
+</script>

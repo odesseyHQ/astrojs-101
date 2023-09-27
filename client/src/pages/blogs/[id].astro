@@ -1,0 +1,38 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import axios from "axios";
+import { format } from "date-fns";
+
+export const getStaticPaths = async () => {
+  const blogs = await axios.get(
+    "http://127.0.0.1:8090/api/collections/blogs/records"
+  );
+
+  return blogs?.data?.items?.map((blog: any) => ({
+    params: { id: blog.id },
+    props: { blog },
+  }));
+};
+const {
+  blog: { title, id, created, description, image },
+} = Astro.props;
+---
+
+<Layout title={title}>
+  <div>
+    <img
+      src={`http://127.0.0.1:8090/api/files/blogs/${id}/${image}`}
+      alt={title}
+      class="w-full h-60 object-cover rounded-lg"
+    />
+  </div>
+  <div class="pt-3">
+    <div class="badge badge-secondary">
+      {format(new Date(created), "dd-MM-yyyy")}
+    </div>
+    <h1 class="text-3xl font-bold pt-3">
+      {title}
+    </h1>
+    <p class="mt-4">{description}</p>
+  </div>
+</Layout>

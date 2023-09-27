@@ -1,0 +1,27 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import axios from "axios";
+import BlogCard from "../../components/BlogCard.astro";
+const blogItems = await axios
+  .get("http://127.0.0.1:8090/api/collections/blogs/records")
+  .catch(() => null);
+---
+
+<Layout title={"Blogs"}>
+  <section>
+    <h1 class="text-3xl font-bold mb-6">Blogs</h1>
+    <div class="flex gap-3 flex-wrap">
+      {
+        blogItems?.data?.items?.map((item: any) => (
+          <BlogCard
+            title={item.title}
+            description={item.description}
+            created={item.created}
+            id={item.id}
+            imageUrl={item.image}
+          />
+        ))
+      }
+    </div>
+  </section>
+</Layout>
