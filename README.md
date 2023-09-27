@@ -29,3 +29,8 @@ To run the server in development mode:
 1. Open your terminal.
 2. Navigate to the server directory using the command: `cd server`.
 3. Start the server in development mode with: `./pocketbase serve`.
+
+### Server Auth
+username: `admin@admin.com`
+<br>
+password: `admin12345`
