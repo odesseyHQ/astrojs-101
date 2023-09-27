@@ -26,7 +26,7 @@ function SignUpForm() {
     });
 
     const res = await axios.post(
-      `${import.meta.env.BE_SERVER}/api/collections/users/records`,
+      `http://127.0.0.1:8090/api/collections/users/records`,
       formData
     );
     if (res.status === 200) window.location.href = "/";

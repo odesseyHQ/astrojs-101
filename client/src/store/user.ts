@@ -26,6 +26,9 @@ export const addUser = (userDetails: user) => {
   user.set(userDetails);
 };
 
+export const getToken = () => {
+  return user.get();
+};
 export const removeUser = () => {
   user.set(null);
 };

@@ -28,7 +28,7 @@ function Data() {
     };
     const image = value.image;
     const formData = new FormData();
-    formData.append("author", decode_token);
+    formData.append("author", "9kqojzkyni3vqx2");
 
     if (image[0]) {
       formData.append("image", image[0]);
@@ -40,7 +40,7 @@ function Data() {
     console.log(formData);
 
     const res = await axios.post(
-      `${import.meta.env.BE_SERVER}/api/collections/blogs/records`,
+      `http://127.0.0.1:8090/api/collections/blogs/records`,
       formData
     );
     if (res.status === 200) window.location.href = "/blogs";

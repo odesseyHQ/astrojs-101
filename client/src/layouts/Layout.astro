@@ -13,18 +13,17 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" data-theme="pastel">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-
     <ViewTransitions />
   </head>
   <body class="relative">
     <Toaster client:idle />
-    <Header client:idle />
-    <Logout client:idle />
+    <Header client:only="react" />
+    <Logout client:only="react" />
     <main class="min-h-screen container mx-auto">
       <slot />
     </main>

@@ -12,7 +12,7 @@ function SignUpForm() {
   const { register, handleSubmit } = useForm<IFormSignIn>();
   const submit = async (values: IFormSignIn) => {
     const res = await axios.post(
-      `${import.meta.env.BE_SERVER}/api/collections/users/auth-with-password`,
+      `http://127.0.0.1:8090/api/collections/users/auth-with-password`,
       values
     );
     if (res.status === 200) {

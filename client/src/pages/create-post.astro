@@ -8,7 +8,10 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <script>
-  if (!localStorage.getItem("token")) {
+  import { getToken } from "../store/user";
+  const userDetails = getToken();
+
+  if (!userDetails?.token) {
     location.href = "/auth";
   }
 </script>
