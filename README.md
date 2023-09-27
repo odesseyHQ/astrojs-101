@@ -6,7 +6,7 @@ Astro.js stands out as one of the fastest static site generators (SSGs) availabl
 
 ## Flexibility
 
-Astro.js can be used to build a wide range of websites, from simple blogs to complex e-commerce sites. It is also UI-agnostic, allowing you to use any UI framework you prefer, such as React, Svelte, or Vue.
+Astro.js can be used to build a wide range of websites, from simple blogs to pesonal complex animated web site. It is also UI-agnostic, allowing you to use any UI framework you prefer, such as React, Svelte, or Vue.
 
 ## Ease of use
 
